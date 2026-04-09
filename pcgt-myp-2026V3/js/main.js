@@ -4,16 +4,54 @@ document.addEventListener('DOMContentLoaded', function() {
     var mobileNav = document.getElementById('mobileNav');
     if (toggleBtn && mobileNav) {
         toggleBtn.addEventListener('click', function() {
-            if (mobileNav.classList.contains('show')) { mobileNav.classList.remove('show'); }
-            else { mobileNav.classList.add('show'); }
+            if (mobileNav.classList.contains('show')) { 
+                mobileNav.classList.remove('show'); 
+            } else { 
+                mobileNav.classList.add('show'); 
+            }
         });
     }
+    
     var currentPage = window.location.pathname.split('/').pop() || 'index.html';
     var navLinks = document.querySelectorAll('.nav-links a, .mobile-nav a');
     for (var i = 0; i < navLinks.length; i++) {
         var link = navLinks[i];
         var href = link.getAttribute('href');
-        if (href === currentPage || (currentPage === '' && href === 'index.html')) { link.classList.add('active'); }
+        if (href === currentPage || (currentPage === '' && href === 'index.html')) { 
+            link.classList.add('active'); 
+        }
+    }
+
+    // Auto-render based on page
+    if (document.getElementById('committeesGrid')) {
+        renderCommittees('committeesGrid');
+    }
+    if (document.getElementById('guestsGrid')) {
+        renderChiefGuests('guestsGrid');
+    }
+    if (document.getElementById('chairmansGrid')) {
+        renderChairmans('chairmansGrid');
+    }
+    if (document.getElementById('trusteesGrid')) {
+        renderTrustees('trusteesGrid');
+    }
+    if (document.getElementById('facultyGrid')) {
+        renderFaculty('facultyGrid');
+    }
+    if (document.getElementById('studentGrid')) {
+        renderStudents('studentGrid');
+    }
+    if (document.getElementById('galleryGrid')) {
+        renderGallery('galleryGrid');
+    }
+    if (document.getElementById('contactGrid')) {
+        renderContacts('contactGrid');
+    }
+    if (document.getElementById('contactInfo')) {
+        renderContactInfo('contactInfo');
+    }
+    if (document.getElementById('detailName')) {
+        renderCommitteeDetail();
     }
 });
 
@@ -62,7 +100,7 @@ var students = [
 ];
 
 var galleryItems = [
-    { title: "Inaugural Ceremony", desc: "MYP 2024 Opening Ceremony with Chief Guest lighting the lamp", icon: "fa-candle-holder" },
+    { title: "Inaugural Ceremony", desc: "MYP 2024 Opening Ceremony with Chief Guest", icon: "fa-candle-holder" },
     { title: "Lok Sabha Session", desc: "Delegates engaged in heated parliamentary debate", icon: "fa-users" },
     { title: "Award Ceremony", desc: "Best Delegate Awards Distribution Ceremony", icon: "fa-trophy" },
     { title: "Group Photo", desc: "All delegates with the Executive Board", icon: "fa-camera" },
@@ -79,37 +117,210 @@ var contacts = [
     { name: "Kesar Sukali", role: "Vice President", phone: "+91 96197 54249", icon: "fa-user-tie" }
 ];
 
-function getChairperson(c) { return c.ebMembers[0] ? c.ebMembers[0].name : 'To Be Announced'; }
-function getViceChairperson(c) { return c.ebMembers[1] ? c.ebMembers[1].name : 'To Be Announced'; }
+function getChairperson(c) { 
+    return c.ebMembers[0] ? c.ebMembers[0].name : 'To Be Announced'; 
+}
 
-function renderCommittees(id) {
-    var container = document.getElementById(id); if (!container) return; var html = '';
+function getViceChairperson(c) { 
+    return c.ebMembers[1] ? c.ebMembers[1].name : 'To Be Announced'; 
+}
+
+function renderCommittees(containerId) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    var html = '';
     for (var i = 0; i < committees.length; i++) {
         var c = committees[i];
-        var badge = c.isTfi ? ' <span style="font-size:0.6rem; background:#B8860B20; padding:0.2rem 0.5rem; border-radius:50px;">Teach for India</span>' : (c.isSchool ? ' <span style="font-size:0.6rem; background:#8B2C2C20; padding:0.2rem 0.5rem; border-radius:50px;">School Committee</span>' : '');
-        var chair = getChairperson(c); var vice = getViceChairperson(c);
-        html += '<div class="committee-card"><div class="card-img"><i class="fas fa-gavel"></i></div><div class="card-content"><h3 class="card-title">' + c.name + badge + '</h3><p class="card-desc">' + c.desc.substring(0, 80) + '...</p><div class="committee-info"><div class="info-row"><span class="info-label">Agenda:</span><span class="info-value">' + c.agenda + '</span></div><div class="info-row"><span class="info-label">' + (c.chairTitle||'Chair') + ':</span><span class="info-value">' + chair + '</span></div><div class="info-row"><span class="info-label">' + (c.viceChairTitle||'Vice-Chair') + ':</span><span class="info-value">' + vice + '</span></div></div><div class="card-footer"><a href="committee-detail.html?id=' + c.id + '" class="btn-detail">View Details →</a></div></div></div>';
+        var badge = '';
+        if (c.isTfi) {
+            badge = ' <span style="font-size:0.6rem; background:#B8860B20; padding:0.2rem 0.5rem; border-radius:50px;">Teach for India</span>';
+        } else if (c.isSchool) {
+            badge = ' <span style="font-size:0.6rem; background:#8B2C2C20; padding:0.2rem 0.5rem; border-radius:50px;">School Committee</span>';
+        }
+        var chair = getChairperson(c);
+        var vice = getViceChairperson(c);
+        var chairLabel = c.chairTitle || 'Chair';
+        var viceLabel = c.viceChairTitle || 'Vice-Chair';
+        
+        html += '<div class="committee-card">';
+        html += '<div class="card-img"><i class="fas fa-gavel"></i></div>';
+        html += '<div class="card-content">';
+        html += '<h3 class="card-title">' + c.name + badge + '</h3>';
+        html += '<p class="card-desc">' + c.desc.substring(0, 80) + '...</p>';
+        html += '<div class="committee-info">';
+        html += '<div class="info-row"><span class="info-label">Agenda:</span><span class="info-value">' + c.agenda + '</span></div>';
+        html += '<div class="info-row"><span class="info-label">' + chairLabel + ':</span><span class="info-value">' + chair + '</span></div>';
+        html += '<div class="info-row"><span class="info-label">' + viceLabel + ':</span><span class="info-value">' + vice + '</span></div>';
+        html += '</div>';
+        html += '<div class="card-footer">';
+        html += '<a href="committee-detail.html?id=' + c.id + '" class="btn-detail">View Details →</a>';
+        html += '</div>';
+        html += '</div></div>';
     }
     container.innerHTML = html;
 }
 
-function renderChiefGuests(id) { var c = document.getElementById(id); if (!c) return; var h = ''; for (var i = 0; i < chiefGuests.length; i++) { var g = chiefGuests[i]; h += '<div class="guest-card"><div class="guest-img"><i class="fas fa-' + g.icon + '"></i></div><div class="guest-content"><h3 class="guest-name">' + g.name + '</h3><p class="guest-title">' + g.title + '</p></div></div>'; } c.innerHTML = h; }
-function renderChairmans(id) { var c = document.getElementById(id); if (!c) return; var h = ''; for (var i = 0; i < chairmans.length; i++) { var m = chairmans[i]; h += '<div class="team-card"><div class="team-img"><i class="fas fa-' + m.icon + '"></i></div><h3 style="font-weight: bold;">' + m.name + '</h3><p style="color: #B8860B; font-size: 0.8rem;">' + m.title + '</p></div>'; } c.innerHTML = h; }
-function renderTrustees(id) { var c = document.getElementById(id); if (!c) return; var h = ''; for (var i = 0; i < trustees.length; i++) { h += '<div class="team-card"><p><strong>' + trustees[i] + '</strong></p><p style="color: #B8860B; font-size: 0.75rem;">Trustee</p></div>'; } c.innerHTML = h; }
-function renderFaculty(id) { var c = document.getElementById(id); if (!c) return; var h = ''; for (var i = 0; i < faculty.length; i++) { var f = faculty[i]; h += '<div class="team-card"><div class="team-img"><i class="fas fa-' + f.icon + '"></i></div><h3 style="font-weight: bold;">' + f.name + '</h3><p>' + f.title + '</p></div>'; } c.innerHTML = h; }
-function renderStudents(id) { var c = document.getElementById(id); if (!c) return; var h = ''; for (var i = 0; i < students.length; i++) { var s = students[i]; h += '<div class="team-card"><div class="team-img"><i class="fas fa-' + s.icon + '"></i></div><h3 style="font-weight: bold;">' + s.name + '</h3><p style="color: #B8860B;">' + s.role + '</p></div>'; } c.innerHTML = h; }
-function renderGallery(id) { var c = document.getElementById(id); if (!c) return; var h = ''; for (var i = 0; i < galleryItems.length; i++) { var g = galleryItems[i]; h += '<div class="gallery-card"><div class="gallery-img"><i class="fas ' + g.icon + '" style="font-size: 3rem;"></i></div><div class="gallery-caption"><p style="font-weight: 600; margin-bottom: 0.25rem;">' + g.title + '</p><p style="font-size: 0.8rem; color: #6b5a4a;">' + g.desc + '</p></div></div>'; } c.innerHTML = h; }
-function renderContacts(id) { var c = document.getElementById(id); if (!c) return; var h = ''; for (var i = 0; i < contacts.length; i++) { var co = contacts[i]; h += '<div class="contact-card"><div class="contact-icon"><i class="fas ' + co.icon + '"></i></div><h4 class="contact-name">' + co.name + '</h4><p class="contact-role">' + co.role + '</p><p class="contact-phone"><i class="fas fa-phone-alt" style="font-size: 0.7rem;"></i> ' + co.phone + '</p></div>'; } c.innerHTML = h; }
-function renderContactInfo(id) { var c = document.getElementById(id); if (!c) return; c.innerHTML = '<div style="display: grid; gap: 1rem;"><div style="display: flex; align-items: center; gap: 1rem; justify-content: center;"><i class="fas fa-envelope" style="font-size: 1.5rem; color: #660810;"></i><a href="mailto:publicconcern@gmail.com" style="color: #1A1A1A; text-decoration: none;">publicconcern@gmail.com</a></div><div style="display: flex; align-items: center; gap: 1rem; justify-content: center;"><i class="fab fa-instagram" style="font-size: 1.5rem; color: #660810;"></i><a href="#" style="color: #1A1A1A; text-decoration: none;">@pcgtmy.p</a></div><div style="display: flex; align-items: center; gap: 1rem; justify-content: center;"><i class="fas fa-globe" style="font-size: 1.5rem; color: #660810;"></i><a href="#" style="color: #1A1A1A; text-decoration: none;">www.pcgt.org</a></div><div style="display: flex; align-items: flex-start; gap: 1rem; justify-content: center; margin-top: 1rem;"><i class="fas fa-map-marker-alt" style="font-size: 1.5rem; color: #660810;"></i><span style="color: #1A1A1A; max-width: 400px;">B/2, Mahalaxmi Chambers, 22, Bhulabhai Desai Road, MUMBAI – 400026</span></div></div>'; }
+function renderChiefGuests(containerId) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    var html = '';
+    for (var i = 0; i < chiefGuests.length; i++) {
+        var g = chiefGuests[i];
+        html += '<div class="guest-card">';
+        html += '<div class="guest-img"><i class="fas fa-' + g.icon + '"></i></div>';
+        html += '<div class="guest-content">';
+        html += '<h3 class="guest-name">' + g.name + '</h3>';
+        html += '<p class="guest-title">' + g.title + '</p>';
+        html += '</div></div>';
+    }
+    container.innerHTML = html;
+}
+
+function renderChairmans(containerId) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    var html = '';
+    for (var i = 0; i < chairmans.length; i++) {
+        var c = chairmans[i];
+        html += '<div class="team-card">';
+        html += '<div class="team-img"><i class="fas fa-' + c.icon + '"></i></div>';
+        html += '<h3 style="font-weight: bold;">' + c.name + '</h3>';
+        html += '<p style="color: #B8860B; font-size: 0.8rem;">' + c.title + '</p>';
+        html += '</div>';
+    }
+    container.innerHTML = html;
+}
+
+function renderTrustees(containerId) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    var html = '';
+    for (var i = 0; i < trustees.length; i++) {
+        html += '<div class="team-card">';
+        html += '<p><strong>' + trustees[i] + '</strong></p>';
+        html += '<p style="color: #B8860B; font-size: 0.75rem;">Trustee</p>';
+        html += '</div>';
+    }
+    container.innerHTML = html;
+}
+
+function renderFaculty(containerId) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    var html = '';
+    for (var i = 0; i < faculty.length; i++) {
+        var f = faculty[i];
+        html += '<div class="team-card">';
+        html += '<div class="team-img"><i class="fas fa-' + f.icon + '"></i></div>';
+        html += '<h3 style="font-weight: bold;">' + f.name + '</h3>';
+        html += '<p>' + f.title + '</p>';
+        html += '</div>';
+    }
+    container.innerHTML = html;
+}
+
+function renderStudents(containerId) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    var html = '';
+    for (var i = 0; i < students.length; i++) {
+        var s = students[i];
+        html += '<div class="team-card">';
+        html += '<div class="team-img"><i class="fas fa-' + s.icon + '"></i></div>';
+        html += '<h3 style="font-weight: bold;">' + s.name + '</h3>';
+        html += '<p style="color: #B8860B;">' + s.role + '</p>';
+        html += '</div>';
+    }
+    container.innerHTML = html;
+}
+
+function renderGallery(containerId) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    var html = '';
+    for (var i = 0; i < galleryItems.length; i++) {
+        var g = galleryItems[i];
+        html += '<div class="gallery-card">';
+        html += '<div class="gallery-img">';
+        html += '<i class="fas ' + g.icon + '" style="font-size: 3rem;"></i>';
+        html += '</div>';
+        html += '<div class="gallery-caption">';
+        html += '<p style="font-weight: 600; margin-bottom: 0.25rem;">' + g.title + '</p>';
+        html += '<p style="font-size: 0.8rem; color: #6b5a4a;">' + g.desc + '</p>';
+        html += '</div></div>';
+    }
+    container.innerHTML = html;
+}
+
+function renderContacts(containerId) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    var html = '';
+    for (var i = 0; i < contacts.length; i++) {
+        var c = contacts[i];
+        html += '<div class="contact-card">';
+        html += '<div class="contact-icon"><i class="fas ' + c.icon + '"></i></div>';
+        html += '<h4 class="contact-name">' + c.name + '</h4>';
+        html += '<p class="contact-role">' + c.role + '</p>';
+        html += '<p class="contact-phone"><i class="fas fa-phone-alt" style="font-size: 0.7rem;"></i> ' + c.phone + '</p>';
+        html += '</div>';
+    }
+    container.innerHTML = html;
+}
+
+function renderContactInfo(containerId) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    var html = '';
+    html += '<div style="display: grid; gap: 1rem;">';
+    html += '<div style="display: flex; align-items: center; gap: 1rem; justify-content: center;">';
+    html += '<i class="fas fa-envelope" style="font-size: 1.5rem; color: #660810;"></i>';
+    html += '<a href="mailto:publicconcern@gmail.com" style="color: #1A1A1A; text-decoration: none;">publicconcern@gmail.com</a>';
+    html += '</div>';
+    html += '<div style="display: flex; align-items: center; gap: 1rem; justify-content: center;">';
+    html += '<i class="fab fa-instagram" style="font-size: 1.5rem; color: #660810;"></i>';
+    html += '<a href="#" style="color: #1A1A1A; text-decoration: none;">@pcgtmy.p</a>';
+    html += '</div>';
+    html += '<div style="display: flex; align-items: center; gap: 1rem; justify-content: center;">';
+    html += '<i class="fas fa-globe" style="font-size: 1.5rem; color: #660810;"></i>';
+    html += '<a href="#" style="color: #1A1A1A; text-decoration: none;">www.pcgt.org</a>';
+    html += '</div>';
+    html += '<div style="display: flex; align-items: flex-start; gap: 1rem; justify-content: center; margin-top: 1rem;">';
+    html += '<i class="fas fa-map-marker-alt" style="font-size: 1.5rem; color: #660810;"></i>';
+    html += '<span style="color: #1A1A1A; max-width: 400px;">B/2, Mahalaxmi Chambers, 22, Bhulabhai Desai Road, MUMBAI – 400026</span>';
+    html += '</div></div>';
+    container.innerHTML = html;
+}
 
 function renderCommitteeDetail() {
-    var id = parseInt(new URLSearchParams(window.location.search).get('id')) || 1;
-    var c = committees.find(function(x) { return x.id === id; }) || committees[0];
+    var urlParams = new URLSearchParams(window.location.search);
+    var id = parseInt(urlParams.get('id')) || 1;
+    var c = null;
+    for (var i = 0; i < committees.length; i++) {
+        if (committees[i].id === id) {
+            c = committees[i];
+            break;
+        }
+    }
+    if (!c) c = committees[0];
+    
     document.getElementById('detailName').textContent = c.name;
     document.getElementById('breadcrumbName').textContent = c.name;
     document.getElementById('detailDesc').textContent = c.desc;
     document.getElementById('detailAgenda').textContent = c.agenda;
     document.getElementById('detailStrength').textContent = c.strength;
-    var eb = document.getElementById('ebMembersGrid'); if (eb) { var h = ''; for (var i = 0; i < c.ebMembers.length; i++) { var m = c.ebMembers[i]; h += '<div class="team-card"><div class="team-img"><i class="fas fa-user-tie"></i></div><h4 style="font-weight: bold;">' + m.name + '</h4><p style="color: #B8860B; font-size: 0.8rem;">' + m.role + '</p></div>'; } eb.innerHTML = h; }
+    
+    var eb = document.getElementById('ebMembersGrid');
+    if (eb) {
+        var html = '';
+        for (var i = 0; i < c.ebMembers.length; i++) {
+            var m = c.ebMembers[i];
+            html += '<div class="team-card">';
+            html += '<div class="team-img"><i class="fas fa-user-tie"></i></div>';
+            html += '<h4 style="font-weight: bold;">' + m.name + '</h4>';
+            html += '<p style="color: #B8860B; font-size: 0.8rem;">' + m.role + '</p>';
+            html += '</div>';
+        }
+        eb.innerHTML = html;
+    }
 }
-
