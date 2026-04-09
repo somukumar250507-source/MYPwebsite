@@ -1,0 +1,691 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700;900&family=Libre+Baskerville:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    background: #FFFFFF;
+    color: #D39858;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6, .card-title, .guest-name, .section-title, .hero-title {
+    font-family: 'Playfair Display SC', Georgia, serif;
+    color: #34150F;
+}
+
+/* Navigation */
+.navbar {
+    background: #660810;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #FFFFFF;
+    font-size: 1.3rem;
+    font-weight: bold;
+    font-family: 'Playfair Display SC', Georgia, serif;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.logo-icon {
+    background: rgba(255,255,255,0.15);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #EACEAA;
+}
+
+.nav-links a.active {
+    color: #EACEAA;
+    border-bottom: 2px solid #EACEAA;
+    padding-bottom: 3px;
+}
+
+.register-nav {
+    background: #EACEAA;
+    padding: 0.5rem 1.5rem !important;
+    border-radius: 50px;
+    color: #34150F !important;
+    font-weight: 600;
+}
+
+.register-nav:hover {
+    background: #d4bd91;
+    color: #34150F !important;
+}
+
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    background: #4a060c;
+    padding: 1rem;
+}
+
+.mobile-nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.75rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+.mobile-nav.show {
+    display: flex;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 1rem;
+    background: #FFFFFF;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: #FAF7F2;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    color: #660810;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #D6C0B1;
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #34150F;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    font-family: 'Playfair Display SC', Georgia, serif;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: #D39858;
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+/* Buttons */
+.btn-primary {
+    background: #660810;
+    color: #FFFFFF;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+.btn-primary:hover {
+    background: #270707;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(102, 8, 16, 0.2);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid #660810;
+    color: #660810;
+    padding: 0.7rem 1.8rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: 0.3s;
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+.btn-secondary:hover {
+    background: #660810;
+    color: #FFFFFF;
+}
+
+.btn-detail {
+    background: transparent;
+    border: 1px solid #660810;
+    color: #660810;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+    cursor: pointer;
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+.btn-detail:hover {
+    background: #660810;
+    color: #FFFFFF;
+}
+
+.btn-outline-light {
+    background: transparent;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    padding: 0.7rem 1.8rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: 0.3s;
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+.btn-outline-light:hover {
+    background: #FFFFFF;
+    color: #660810;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Section Styles */
+.section {
+    padding: 5rem 0;
+    background: #FFFFFF;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-subtitle {
+    color: #D39858;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #34150F;
+    margin-top: 0.5rem;
+    font-family: 'Playfair Display SC', Georgia, serif;
+}
+
+.title-underline {
+    width: 80px;
+    height: 3px;
+    background: #660810;
+    margin: 1rem auto 0;
+}
+
+/* Cards Grid */
+.grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Committee Card */
+.committee-card {
+    background: #FAF7F2;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #D6C0B1;
+}
+
+.committee-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(102, 8, 16, 0.1);
+}
+
+.card-img {
+    height: 140px;
+    background: linear-gradient(135deg, #EACEAA, #d4bd91);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #660810;
+}
+
+.card-content {
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #34150F;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+    font-family: 'Playfair Display SC', Georgia, serif;
+}
+
+.card-desc {
+    font-size: 0.8rem;
+    color: #D39858;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+/* Committee Info Row */
+.committee-info {
+    background: #FFFFFF;
+    padding: 0.6rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    font-size: 0.75rem;
+    border: 1px solid #D6C0B1;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.3rem;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #660810;
+}
+
+.info-value {
+    color: #D39858;
+}
+
+.card-footer {
+    margin-top: 0.75rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Guest Card */
+.guest-card {
+    background: #FAF7F2;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    border-top: 4px solid #EACEAA;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    border: 1px solid #D6C0B1;
+}
+
+.guest-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(102, 8, 16, 0.1);
+}
+
+.guest-img {
+    height: 160px;
+    background: linear-gradient(135deg, #EACEAA, #d4bd91);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #660810;
+}
+
+.guest-content {
+    padding: 1.5rem;
+}
+
+.guest-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #34150F;
+    font-family: 'Playfair Display SC', Georgia, serif;
+}
+
+.guest-title {
+    font-size: 0.75rem;
+    color: #D39858;
+    font-weight: 600;
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+/* Team Card */
+.team-card {
+    background: #FAF7F2;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    border: 1px solid #D6C0B1;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(102, 8, 16, 0.1);
+}
+
+.team-img {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #EACEAA, #d4bd91);
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #660810;
+}
+
+/* Stat Card */
+.stat-card {
+    text-align: center;
+    padding: 2rem;
+    background: #FAF7F2;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border: 1px solid #D6C0B1;
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    color: #660810;
+    margin-bottom: 1rem;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #34150F;
+    font-family: 'Playfair Display SC', Georgia, serif;
+}
+
+/* Theme Box */
+.theme-box {
+    background: #FAF7F2;
+    border-radius: 12px;
+    padding: 2rem;
+    border-left: 5px solid #660810;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border: 1px solid #D6C0B1;
+}
+
+/* Gallery Card */
+.gallery-card {
+    background: #FAF7F2;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    border: 1px solid #D6C0B1;
+}
+
+.gallery-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(102, 8, 16, 0.1);
+}
+
+.gallery-img {
+    height: 200px;
+    background: linear-gradient(135deg, #EACEAA, #d4bd91);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #660810;
+}
+
+.gallery-caption {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #D39858;
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+/* Contact Card */
+.contact-card {
+    background: #FAF7F2;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    border: 1px solid #D6C0B1;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(102, 8, 16, 0.1);
+}
+
+.contact-icon {
+    font-size: 2rem;
+    color: #660810;
+    margin-bottom: 0.5rem;
+}
+
+.contact-name {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #34150F;
+    font-family: 'Playfair Display SC', Georgia, serif;
+}
+
+.contact-role {
+    font-size: 0.8rem;
+    color: #D39858;
+    margin-bottom: 0.5rem;
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+.contact-phone {
+    font-size: 0.9rem;
+    color: #34150F;
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, #660810 0%, #4a060c 100%);
+    color: #FFFFFF;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #FFFFFF;
+    font-family: 'Playfair Display SC', Georgia, serif;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    color: #EACEAA;
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+.breadcrumb a {
+    color: #EACEAA;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #FFFFFF;
+}
+
+.breadcrumb span {
+    color: #FFFFFF;
+}
+
+/* Footer */
+.footer {
+    background: #150C0C;
+    color: #D6C0B1;
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.85rem;
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .mobile-toggle { display: block; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2.2rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .section-title { font-size: 1.8rem; }
+    .container { padding: 0 1rem; }
+    .page-header h1 { font-size: 2rem; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Utility */
+.text-center { text-align: center; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+.mb-8 { margin-bottom: 3rem; }
+.flex { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.items-center { align-items: center; }
+.gap-2 { gap: 0.5rem; }
+.gap-4 { gap: 1rem; }
+.max-w-2xl { max-width: 800px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* Link styles */
+a {
+    color: #660810;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #270707;
+}
+
+/* Paragraph text */
+p {
+    color: #D39858;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    line-height: 1.6;
+}
+
+/* Strong text */
+strong {
+    color: #34150F;
+}
