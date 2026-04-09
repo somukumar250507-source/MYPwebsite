@@ -1,3 +1,4 @@
+cat > js/main.js << 'EOF'
 document.addEventListener('DOMContentLoaded', function() {
     var toggleBtn = document.getElementById('mobileToggle');
     var mobileNav = document.getElementById('mobileNav');
@@ -47,7 +48,8 @@ var trustees = ["Dr. R.K. Anand", "Mr. V.P. Raja", "Mr. Gulam Vahanvaty", "Mrs. 
 
 var faculty = [
     { name: "Dr. Navashikha Duara", title: "Principal, Pravin Gandhi College of Law", icon: "chalkboard-user" },
-    { name: "Mrs. Kavita Sharma", title: "Faculty Convenor, Model Youth Parliament", icon: "chalkboard-user" }
+    { name: "Mrs. Kavita Sharma", title: "Faculty Convenor, Model Youth Parliament", icon: "chalkboard-user" },
+    { name: "Adv. Shivam Jain Kakadia", title: "Convenor, PCGT", icon: "user-tie" }
 ];
 
 var students = [
@@ -110,3 +112,4 @@ function renderCommitteeDetail() {
     document.getElementById('detailStrength').textContent = c.strength;
     var eb = document.getElementById('ebMembersGrid'); if (eb) { var h = ''; for (var i = 0; i < c.ebMembers.length; i++) { var m = c.ebMembers[i]; h += '<div class="team-card"><div class="team-img"><i class="fas fa-user-tie"></i></div><h4 style="font-weight: bold;">' + m.name + '</h4><p style="color: #B8860B; font-size: 0.8rem;">' + m.role + '</p></div>'; } eb.innerHTML = h; }
 }
+EOF
