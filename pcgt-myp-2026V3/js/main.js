@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     var toggleBtn = document.getElementById('mobileToggle');
     var mobileNav = document.getElementById('mobileNav');
@@ -30,12 +31,11 @@ var committees = [
         desc: "State legislature simulation focusing on regional governance, bills and floor procedures. Delegates will experience the intricacies of state-level lawmaking and policy implementation.", 
         agenda: "Review of State Education Policy and Urban Development Reforms", 
         strength: "60-80 delegates", 
+        chairTitle: "Speaker",
+        viceChairTitle: "Deputy Speaker",
         ebMembers: [
-            { name: "To Be Announced", role: "Chairperson" },
-            { name: "To Be Announced", role: "Vice-Chairperson" },
-            { name: "To Be Announced", role: "Executive Board Member" }, 
-            { name: "To Be Announced", role: "Executive Board Member" }, 
-            { name: "To Be Announced", role: "Rapporteur" }
+            { name: "To Be Announced", role: "Speaker" },
+            { name: "To Be Announced", role: "Deputy Speaker" }
         ] 
     },
     { 
@@ -44,12 +44,11 @@ var committees = [
         desc: "Lower house debates on national bills, budget, and governance accountability. Experience the heat of parliamentary debates and understand the legislative process at the national level.", 
         agenda: "Discussion on Electoral Reforms and Anti-Defection Law", 
         strength: "100-120 delegates", 
+        chairTitle: "Speaker",
+        viceChairTitle: "Deputy Speaker",
         ebMembers: [
-            { name: "To Be Announced", role: "Chairperson" },
-            { name: "To Be Announced", role: "Vice-Chairperson" },
-            { name: "To Be Announced", role: "Executive Board Member" }, 
-            { name: "To Be Announced", role: "Executive Board Member" }, 
-            { name: "To Be Announced", role: "Rapporteur" }
+            { name: "To Be Announced", role: "Speaker" },
+            { name: "To Be Announced", role: "Deputy Speaker" }
         ] 
     },
     { 
@@ -58,12 +57,11 @@ var committees = [
         desc: "Upper house deliberations on federal issues, long-term policy, and state representation. Focus on the Council of States and its role in India's federal structure.", 
         agenda: "Centre-State Relations and Fiscal Federalism in India", 
         strength: "50-60 delegates", 
+        chairTitle: "Chairperson",
+        viceChairTitle: "Deputy Chairperson",
         ebMembers: [
             { name: "To Be Announced", role: "Chairperson" },
-            { name: "To Be Announced", role: "Vice-Chairperson" },
-            { name: "To Be Announced", role: "Executive Board Member" }, 
-            { name: "To Be Announced", role: "Executive Board Member" }, 
-            { name: "To Be Announced", role: "Rapporteur" }
+            { name: "To Be Announced", role: "Deputy Chairperson" }
         ] 
     },
     { 
@@ -72,11 +70,11 @@ var committees = [
         desc: "Detailed scrutiny of bills, reports, and executive accountability. Work behind the scenes of parliamentary functioning and understand committee systems.", 
         agenda: "Examination of Data Protection and Privacy Bill", 
         strength: "30-40 delegates", 
+        chairTitle: "Chairperson",
+        viceChairTitle: "Co-Chairperson",
         ebMembers: [
             { name: "To Be Announced", role: "Chairperson" },
-            { name: "To Be Announced", role: "Vice-Chairperson" },
-            { name: "To Be Announced", role: "Executive Board Member" }, 
-            { name: "To Be Announced", role: "Executive Board Member" }
+            { name: "To Be Announced", role: "Co-Chairperson" }
         ] 
     },
     { 
@@ -85,12 +83,11 @@ var committees = [
         desc: "Historical constitutional debates, fundamental rights and directive principles. Step into the shoes of our founding fathers and mothers who drafted the Indian Constitution.", 
         agenda: "Revisiting the Debates on Fundamental Rights and Directive Principles", 
         strength: "50-60 delegates", 
+        chairTitle: "Chairperson",
+        viceChairTitle: "Vice-Chairperson",
         ebMembers: [
             { name: "To Be Announced", role: "Chairperson" },
-            { name: "To Be Announced", role: "Vice-Chairperson" },
-            { name: "To Be Announced", role: "Executive Board Member" }, 
-            { name: "To Be Announced", role: "Executive Board Member" }, 
-            { name: "To Be Announced", role: "Rapporteur" }
+            { name: "To Be Announced", role: "Vice-Chairperson" }
         ] 
     },
     { 
@@ -99,11 +96,11 @@ var committees = [
         desc: "Cross-party consensus building, coalition politics and national interest. Experience the dynamics of multi-party democracy and coalition governance.", 
         agenda: "Building Consensus on National Security and Internal Threats", 
         strength: "40-50 delegates", 
+        chairTitle: "Moderator",
+        viceChairTitle: "Deputy Moderator",
         ebMembers: [
-            { name: "To Be Announced", role: "Chairperson" },
-            { name: "To Be Announced", role: "Vice-Chairperson" },
-            { name: "To Be Announced", role: "Executive Board Member" }, 
-            { name: "To Be Announced", role: "Executive Board Member" }
+            { name: "To Be Announced", role: "Moderator" },
+            { name: "To Be Announced", role: "Deputy Moderator" }
         ] 
     },
     { 
@@ -112,11 +109,11 @@ var committees = [
         desc: "Reporting simulations, press briefings, and journalistic accountability. Experience the Fourth Estate and its crucial role in democracy.", 
         agenda: "Media Ethics and Responsible Reporting in Digital Age", 
         strength: "20-30 delegates", 
+        chairTitle: "Editor-in-Chief",
+        viceChairTitle: "Managing Editor",
         ebMembers: [
-            { name: "To Be Announced", role: "Chairperson" },
-            { name: "To Be Announced", role: "Vice-Chairperson" },
-            { name: "To Be Announced", role: "Executive Board Member" }, 
-            { name: "To Be Announced", role: "Executive Board Member" }
+            { name: "To Be Announced", role: "Editor-in-Chief" },
+            { name: "To Be Announced", role: "Managing Editor" }
         ] 
     },
     { 
@@ -125,11 +122,11 @@ var committees = [
         desc: "Student-led policy dialogue on education, youth welfare and civic issues. A special committee for school students to engage with policy making.", 
         agenda: "National Education Policy 2020: Implementation Challenges", 
         strength: "50-60 delegates", 
+        chairTitle: "Chairperson",
+        viceChairTitle: "Vice-Chairperson",
         ebMembers: [
             { name: "To Be Announced", role: "Chairperson" },
-            { name: "To Be Announced", role: "Vice-Chairperson" },
-            { name: "To Be Announced", role: "Executive Board Member" }, 
-            { name: "To Be Announced", role: "Executive Board Member" }
+            { name: "To Be Announced", role: "Vice-Chairperson" }
         ], 
         isSchool: true 
     },
@@ -139,11 +136,11 @@ var committees = [
         desc: "Policy think tank simulation focusing on sustainable development and governance reforms. Experience India's premier policy think tank. (Exclusive for Teach for India fellows)", 
         agenda: "Sustainable Development Goals and India's Progress by 2030", 
         strength: "30-40 delegates", 
+        chairTitle: "CEO",
+        viceChairTitle: "Deputy CEO",
         ebMembers: [
-            { name: "To Be Announced", role: "Chairperson" },
-            { name: "To Be Announced", role: "Vice-Chairperson" },
-            { name: "To Be Announced", role: "Executive Board Member" }, 
-            { name: "To Be Announced", role: "Executive Board Member" }
+            { name: "To Be Announced", role: "CEO" },
+            { name: "To Be Announced", role: "Deputy CEO" }
         ], 
         isTfi: true 
     }
@@ -204,31 +201,32 @@ var contacts = [
 
 function getChairperson(committee) {
     for (var i = 0; i < committee.ebMembers.length; i++) {
-        if (committee.ebMembers[i].role === 'Chairperson') {
+        if (committee.ebMembers[i].role === committee.chairTitle || 
+            committee.ebMembers[i].role === 'Chairperson' || 
+            committee.ebMembers[i].role === 'Speaker' || 
+            committee.ebMembers[i].role === 'Moderator' || 
+            committee.ebMembers[i].role === 'Editor-in-Chief' || 
+            committee.ebMembers[i].role === 'CEO') {
             return committee.ebMembers[i].name;
         }
     }
-    return 'To Be Announced';
+    return committee.ebMembers[0] ? committee.ebMembers[0].name : 'To Be Announced';
 }
 
 function getViceChairperson(committee) {
     for (var i = 0; i < committee.ebMembers.length; i++) {
-        if (committee.ebMembers[i].role === 'Vice-Chairperson') {
+        if (committee.ebMembers[i].role === committee.viceChairTitle || 
+            committee.ebMembers[i].role === 'Vice-Chairperson' || 
+            committee.ebMembers[i].role === 'Deputy Speaker' || 
+            committee.ebMembers[i].role === 'Deputy Chairperson' ||
+            committee.ebMembers[i].role === 'Co-Chairperson' ||
+            committee.ebMembers[i].role === 'Deputy Moderator' || 
+            committee.ebMembers[i].role === 'Managing Editor' || 
+            committee.ebMembers[i].role === 'Deputy CEO') {
             return committee.ebMembers[i].name;
         }
     }
-    return 'To Be Announced';
-}
-
-function getOtherEBMembers(committee) {
-    var others = [];
-    for (var i = 0; i < committee.ebMembers.length; i++) {
-        var role = committee.ebMembers[i].role;
-        if (role !== 'Chairperson' && role !== 'Vice-Chairperson') {
-            others.push(committee.ebMembers[i]);
-        }
-    }
-    return others;
+    return committee.ebMembers[1] ? committee.ebMembers[1].name : 'To Be Announced';
 }
 
 function renderCommittees(containerId) {
@@ -247,6 +245,8 @@ function renderCommittees(containerId) {
         
         var chair = getChairperson(c);
         var viceChair = getViceChairperson(c);
+        var chairLabel = c.chairTitle || 'Chair';
+        var viceLabel = c.viceChairTitle || 'Vice-Chair';
         
         html += '<div class="committee-card">';
         html += '<div class="card-img"><i class="fas fa-gavel"></i></div>';
@@ -255,8 +255,8 @@ function renderCommittees(containerId) {
         html += '<p class="card-desc">' + c.desc.substring(0, 80) + '...</p>';
         html += '<div class="committee-info">';
         html += '<div class="info-row"><span class="info-label">Agenda:</span><span class="info-value">' + c.agenda + '</span></div>';
-        html += '<div class="info-row"><span class="info-label">Chair:</span><span class="info-value">' + chair + '</span></div>';
-        html += '<div class="info-row"><span class="info-label">Vice-Chair:</span><span class="info-value">' + viceChair + '</span></div>';
+        html += '<div class="info-row"><span class="info-label">' + chairLabel + ':</span><span class="info-value">' + chair + '</span></div>';
+        html += '<div class="info-row"><span class="info-label">' + viceLabel + ':</span><span class="info-value">' + viceChair + '</span></div>';
         html += '</div>';
         html += '<div class="card-footer">';
         html += '<a href="committee-detail.html?id=' + c.id + '" class="btn-detail">View Details →</a>';
@@ -392,20 +392,20 @@ function renderContactInfo(containerId) {
     var html = '';
     html += '<div style="display: grid; gap: 1rem;">';
     html += '<div style="display: flex; align-items: center; gap: 1rem; justify-content: center;">';
-    html += '<i class="fas fa-envelope" style="font-size: 1.5rem; color: #8B2C2C;"></i>';
-    html += '<a href="mailto:publicconcern@gmail.com" style="color: #2c1810; text-decoration: none;">publicconcern@gmail.com</a>';
+    html += '<i class="fas fa-envelope" style="font-size: 1.5rem; color: #660810;"></i>';
+    html += '<a href="mailto:publicconcern@gmail.com" style="color: #1A1A1A; text-decoration: none;">publicconcern@gmail.com</a>';
     html += '</div>';
     html += '<div style="display: flex; align-items: center; gap: 1rem; justify-content: center;">';
-    html += '<i class="fab fa-instagram" style="font-size: 1.5rem; color: #8B2C2C;"></i>';
-    html += '<a href="#" style="color: #2c1810; text-decoration: none;">@pcgtmy.p</a>';
+    html += '<i class="fab fa-instagram" style="font-size: 1.5rem; color: #660810;"></i>';
+    html += '<a href="#" style="color: #1A1A1A; text-decoration: none;">@pcgtmy.p</a>';
     html += '</div>';
     html += '<div style="display: flex; align-items: center; gap: 1rem; justify-content: center;">';
-    html += '<i class="fas fa-globe" style="font-size: 1.5rem; color: #8B2C2C;"></i>';
-    html += '<a href="#" style="color: #2c1810; text-decoration: none;">www.pcgt.org</a>';
+    html += '<i class="fas fa-globe" style="font-size: 1.5rem; color: #660810;"></i>';
+    html += '<a href="#" style="color: #1A1A1A; text-decoration: none;">www.pcgt.org</a>';
     html += '</div>';
     html += '<div style="display: flex; align-items: flex-start; gap: 1rem; justify-content: center; margin-top: 1rem;">';
-    html += '<i class="fas fa-map-marker-alt" style="font-size: 1.5rem; color: #8B2C2C;"></i>';
-    html += '<span style="color: #2c1810; max-width: 400px;">B/2, Mahalaxmi Chambers, 22, Bhulabhai Desai Road, MUMBAI – 400026</span>';
+    html += '<i class="fas fa-map-marker-alt" style="font-size: 1.5rem; color: #660810;"></i>';
+    html += '<span style="color: #1A1A1A; max-width: 400px;">B/2, Mahalaxmi Chambers, 22, Bhulabhai Desai Road, MUMBAI – 400026</span>';
     html += '</div>';
     html += '</div>';
     container.innerHTML = html;
@@ -434,9 +434,7 @@ function renderCommitteeDetail() {
         var html = '';
         for (var i = 0; i < committee.ebMembers.length; i++) {
             var m = committee.ebMembers[i];
-            var icon = 'user';
-            if (m.role === 'Chairperson') icon = 'user-tie';
-            else if (m.role === 'Vice-Chairperson') icon = 'user-tie';
+            var icon = 'user-tie';
             html += '<div class="team-card">';
             html += '<div class="team-img"><i class="fas fa-' + icon + '"></i></div>';
             html += '<h4 style="font-weight: bold;">' + m.name + '</h4>';
