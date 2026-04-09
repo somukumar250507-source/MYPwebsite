@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700;900&family=Libre+Baskerville:wght@400;700&display=swap');
 
 /* ============================================
@@ -7,7 +8,7 @@
     /* Color Scheme */
     --primary-color: #660810;
     --secondary-color: #EACEAA;
-    --background-color: #FFFFFF;
+    --background-color: #E3E1D1;
     --text-dark: #34150F;
     --text-light: #1A1A1A;
     --hover-color: #270707;
@@ -15,10 +16,10 @@
     --card-bg: #FAF7F2;
     --border-color: #D6C0B1;
     
-    /* Paper Texture - Soft Abstract Cream Waves */
-    --texture-opacity: 0.08;
-    --texture-blur: 2px;
-    --texture-blend-mode: overlay;
+    /* Paper Texture Settings */
+    --texture-opacity: 0.45;
+    --texture-contrast: 115%;
+    --texture-brightness: 108%;
     
     /* Typography */
     --heading-font: 'Playfair Display SC', Georgia, serif;
@@ -40,12 +41,48 @@
     box-sizing: border-box;
 }
 
+html {
+    background-color: var(--background-color);
+}
+
 body {
     font-family: var(--body-font);
-    background: var(--background-color);
+    background-color: var(--background-color);
     color: var(--text-light);
     position: relative;
     min-height: 100vh;
+}
+
+/* ============================================
+   FULL PAGE PAPER TEXTURE
+   Antique cream vellum with horizontal wavy micro-texture
+   ============================================ */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: var(--texture-opacity);
+    
+    /* Layer 1: Horizontal wavy noise (fractal) */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperTexture' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.01 0.04' numOctaves='4' stitchTiles='stitch' result='noise'/%3E%3CfeColorMatrix type='saturate' values='0' in='noise' result='grayNoise'/%3E%3CfeComponentTransfer in='grayNoise' result='adjustedNoise'%3E%3CfeFuncA type='linear' slope='0.15'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperTexture)'/%3E%3C/svg%3E");
+    
+    /* Layer 2: Fine grain/dust overlay */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperTexture' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.01 0.04' numOctaves='4' stitchTiles='stitch' result='noise'/%3E%3CfeColorMatrix type='saturate' values='0' in='noise' result='grayNoise'/%3E%3CfeComponentTransfer in='grayNoise' result='adjustedNoise'%3E%3CfeFuncA type='linear' slope='0.15'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperTexture)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch' result='grain'/%3E%3CfeColorMatrix type='saturate' values='0' in='grain' result='grayGrain'/%3E%3CfeComponentTransfer in='grayGrain' result='softGrain'%3E%3CfeFuncA type='linear' slope='0.06'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+    
+    background-blend-mode: overlay, normal;
+    filter: contrast(var(--texture-contrast)) brightness(var(--texture-brightness));
+}
+
+/* Ensure content stays above texture */
+body > * {
+    position: relative;
+    z-index: 2;
 }
 
 /* Typography */
@@ -75,53 +112,6 @@ a {
 
 a:hover {
     color: var(--hover-color);
-}
-
-/* ============================================
-   SOFT ABSTRACT CREAM WAVES TEXTURE
-   Applied to: Hero, Page Headers, Theme Boxes, Section Highlights
-   ============================================ */
-.texture-wave {
-    position: relative;
-    overflow: hidden;
-}
-
-.texture-wave::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    opacity: var(--texture-opacity);
-    filter: blur(var(--texture-blur));
-    mix-blend-mode: var(--texture-blend-mode);
-    background: 
-        radial-gradient(circle at 20% 30%, rgba(234, 206, 170, 0.5) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(245, 237, 224, 0.4) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(255, 250, 240, 0.3) 0%, transparent 60%),
-        repeating-linear-gradient(45deg, 
-            transparent 0px, 
-            transparent 40px, 
-            rgba(234, 206, 170, 0.05) 40px, 
-            rgba(234, 206, 170, 0.05) 80px,
-            transparent 80px,
-            transparent 120px),
-        repeating-linear-gradient(-30deg, 
-            transparent 0px, 
-            transparent 60px, 
-            rgba(245, 237, 224, 0.04) 60px, 
-            rgba(245, 237, 224, 0.04) 120px,
-            transparent 120px,
-            transparent 180px);
-}
-
-/* Ensure content stays above texture */
-.texture-wave > * {
-    position: relative;
-    z-index: 2;
 }
 
 /* ============================================
@@ -245,7 +235,7 @@ a:hover {
 }
 
 /* ============================================
-   HERO SECTION - With Wave Texture
+   HERO SECTION
    ============================================ */
 .hero {
     min-height: 85vh;
@@ -268,6 +258,7 @@ a:hover {
     margin-bottom: 1.5rem;
     border: 1px solid var(--border-color);
     font-family: var(--body-font);
+    box-shadow: var(--shadow-intensity);
 }
 
 .hero-title {
@@ -371,35 +362,6 @@ a:hover {
     position: relative;
 }
 
-/* Section with texture - for highlighted sections */
-.section-highlight {
-    position: relative;
-}
-
-.section-highlight::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    opacity: var(--texture-opacity);
-    filter: blur(var(--texture-blur));
-    mix-blend-mode: var(--texture-blend-mode);
-    background: 
-        radial-gradient(circle at 20% 30%, rgba(234, 206, 170, 0.5) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(245, 237, 224, 0.4) 0%, transparent 50%),
-        repeating-linear-gradient(45deg, 
-            transparent 0px, 
-            transparent 40px, 
-            rgba(234, 206, 170, 0.05) 40px, 
-            rgba(234, 206, 170, 0.05) 80px,
-            transparent 80px,
-            transparent 120px);
-}
-
 .section-header {
     text-align: center;
     margin-bottom: 3rem;
@@ -498,7 +460,7 @@ a:hover {
 
 /* Committee Info Row */
 .committee-info {
-    background: #FFFFFF;
+    background: rgba(255, 255, 255, 0.7);
     padding: 0.6rem;
     border-radius: 8px;
     margin: 0.5rem 0;
@@ -626,7 +588,7 @@ a:hover {
     font-family: var(--heading-font);
 }
 
-/* Theme Box - With Wave Texture */
+/* Theme Box */
 .theme-box {
     background: var(--card-bg);
     border-radius: var(--border-radius);
@@ -634,7 +596,6 @@ a:hover {
     box-shadow: var(--shadow-intensity);
     border: 1px solid var(--border-color);
     border-left: 5px solid var(--primary-color);
-    position: relative;
 }
 
 /* Gallery Card */
@@ -714,7 +675,7 @@ a:hover {
 }
 
 /* ============================================
-   PAGE HEADER - With Wave Texture
+   PAGE HEADER
    ============================================ */
 .page-header {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--hover-color) 100%);
@@ -758,14 +719,6 @@ a:hover {
 
 .breadcrumb span {
     color: #FFFFFF;
-}
-
-/* ============================================
-   BANNER - With Wave Texture
-   ============================================ */
-.banner {
-    position: relative;
-    padding: 3rem 0;
 }
 
 /* ============================================
