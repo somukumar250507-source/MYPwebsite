@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Committee Details - PCGT Model Youth Parliament 2026</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .committee-header {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .committee-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-intensity);
+            aspect-ratio: 16 / 9;
+        }
+        
+        .committee-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .committee-quick-info {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-intensity);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .quick-info-item {
+            display: flex;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .quick-info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .quick-info-label {
+            width: 120px;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-family: var(--heading-font);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .quick-info-value {
+            flex: 1;
+            color: var(--text-light);
+            font-family: var(--body-font);
+        }
+        
+        @media (max-width: 768px) {
+            .committee-header {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="index.html">
+                <div class="logo-icon"><i class="fas fa-gavel"></i></div>
+                <span>MYP 2026</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="committees.html">Committees</a>
+            <a href="chief-guests.html">Chief Guests</a>
+            <a href="team.html">Team</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+            <a href="register.html" class="register-nav"><i class="fas fa-user-plus"></i> Register</a>
+        </div>
+        <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="committees.html">Committees</a>
+        <a href="chief-guests.html">Chief Guests</a>
+        <a href="team.html">Team</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="register.html">Register</a>
+    </div>
+</nav>
+
+<header class="page-header">
+    <div class="container">
+        <h1 id="detailName">Committee Name</h1>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> <span>/</span> 
+            <a href="committees.html">Committees</a> <span>/</span> 
+            <span id="breadcrumbName">Committee</span>
+        </div>
+    </div>
+</header>
+
+<section class="section">
+    <div class="container">
+        <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+            <a href="committees.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Back to Committees</a>
+            <a href="register.html" class="btn-primary"><i class="fas fa-user-plus"></i> Register for this Committee</a>
+        </div>
+
+        <div class="committee-header">
+            <div class="committee-image">
+                <img id="detailImage" src="assets/committee-1.jpg" alt="Committee Image">
+            </div>
+            <div class="committee-quick-info">
+                <div class="quick-info-item">
+                    <span class="quick-info-label">Agenda</span>
+                    <span class="quick-info-value" id="detailAgenda"></span>
+                </div>
+                <div class="quick-info-item">
+                    <span class="quick-info-label">Strength</span>
+                    <span class="quick-info-value" id="detailStrength"></span>
+                </div>
+                <div class="quick-info-item">
+                    <span class="quick-info-label" id="chairLabel">Chair</span>
+                    <span class="quick-info-value" id="detailChair"></span>
+                </div>
+                <div class="quick-info-item">
+                    <span class="quick-info-label" id="viceChairLabel">Vice Chair</span>
+                    <span class="quick-info-value" id="detailViceChair"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme-box" style="margin-bottom: 2rem;">
+            <h3 style="color: #660810; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif;"><i class="fas fa-info-circle"></i> About the Committee</h3>
+            <p id="detailDesc" style="line-height: 1.8;"></p>
+        </div>
+
+        <div class="theme-box" style="margin-bottom: 2rem; text-align: center;">
+            <h3 style="color: #660810; margin-bottom: 1.5rem; font-family: 'Montserrat', sans-serif;"><i class="fas fa-folder-open"></i> Committee Resources</h3>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#" id="portfolioLink" class="btn-primary" target="_blank" style="background: #34150F;">
+                    <i class="fas fa-table"></i> Committee Portfolio Matrix
+                </a>
+                <a href="#" id="resourcesLink" class="btn-primary" target="_blank" style="background: #EACEAA; color: #34150F;">
+                    <i class="fab fa-google-drive"></i> Resources Drive Link
+                </a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">
+                <i class="fas fa-info-circle"></i> Access the committee portfolio for roles and agenda details.
+            </p>
+        </div>
+
+        <div class="theme-box">
+            <h3 style="color: #660810; margin-bottom: 2rem; font-family: 'Montserrat', sans-serif;"><i class="fas fa-user-tie"></i> Executive Board</h3>
+            <div id="ebMembersGrid" class="grid grid-2" style="max-width: 600px; margin: 0 auto;"></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="register.html" class="btn-primary"><i class="fas fa-user-plus"></i> Register for this Committee</a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2026 PCGT Model Youth Parliament | Public Concern for Governance Trust</p>
+    <p style="margin-top: 0.5rem;">In collaboration with SVKM's Pravin Gandhi College of Law</p>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    renderCommitteeDetail();
+    
+    var urlParams = new URLSearchParams(window.location.search);
+    var committeeId = parseInt(urlParams.get('id')) || 1;
+    
+    var portfolioLinks = {
+        1: '#', 2: '#', 3: '#', 4: '#', 5: '#', 6: '#', 7: '#', 8: '#', 9: '#'
+    };
+    
+    var resourcesLinks = {
+        1: '#', 2: '#', 3: '#', 4: '#', 5: '#', 6: '#', 7: '#', 8: '#', 9: '#'
+    };
+    
+    var portfolioLink = document.getElementById('portfolioLink');
+    var resourcesLink = document.getElementById('resourcesLink');
+    
+    if (portfolioLink) portfolioLink.href = portfolioLinks[committeeId] || '#';
+    if (resourcesLink) resourcesLink.href = resourcesLinks[committeeId] || '#';
+});
+</script>
+</body>
+</html>
