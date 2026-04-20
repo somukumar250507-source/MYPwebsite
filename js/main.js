@@ -75,15 +75,13 @@ var students = [
 ];
 
 var galleryItems = [
-    { title: "Inaugural Ceremony", desc: "MYP 2024 Opening Ceremony", image: "assets/committee-1.jpg" },
-    { title: "Lok Sabha Session", desc: "Delegates in parliamentary debate", image: "assets/committee-2.jpg" },
-    { title: "Award Ceremony", desc: "Best Delegate Awards", image: "assets/committee-3.jpg" },
-    { title: "Group Photo", desc: "All delegates with EB", image: "assets/committee-4.jpg" },
-    { title: "Committee Deliberation", desc: "Rajya Sabha in discussion", image: "assets/committee-5.jpg" },
-    { title: "Guest Lecture", desc: "Justice B.N. Srikrishna", image: "assets/guest-1.jpg" },
-    { title: "Press Conference", desc: "Indian Press committee", image: "assets/committee-7.jpg" },
-    { title: "Cultural Evening", desc: "Cultural performances", image: "assets/committee-8.jpg" },
-    { title: "Closing Ceremony", desc: "Vote of thanks", image: "assets/committee-9.jpg" }
+    { title: "Committee in Session", desc: "MYP 2024 Opening Ceremony", image: "assets/MLA.jpg" },
+    { title: "Organising Committee", desc: "Meet the previous organising team", image: "assets/OC.jpg" },
+    { title: "Award Ceremony", desc: "Best Delegate Awards", image: "assets/AWARD.jpg" },
+    { title: "School Committee", desc: "School Committee in Session", image: "assets/SCHOOL.jpg" },
+    { title: "Core Committee ", desc: "Core with our Chief Guest", image: "assets/CORE.jpg" },
+    { title: "Guest Lecture", desc: "Justice Sujata Manohar", image: "assets/JUSTICE.jpg" },
+ 
 ];
 
 var contacts = [
